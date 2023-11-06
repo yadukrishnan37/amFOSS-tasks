@@ -1,0 +1,16 @@
+﻿{
+  "name": "OpenWeather",
+  "version": "0.0.1",
+  "manifest_version": 3,
+  "description": "Simple weather forecaster for Chrome",
+  "action": {
+    "default_title": "Check weather",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "32": "retro.png"
+    }
+  },
+  "permissions": ["activeTab"]
+}
+
+
