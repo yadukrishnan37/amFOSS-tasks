@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 return response.json();
             })
             .then((jsonData) => {
+                errorDisplay.style.display = 'none';
+
                 fetch(`https://openweathermap.org/img/wn/${jsonData.weather[0].icon}@2x.png`)
                     .then((res) => res.blob())
                     .then((result) => {
