@@ -3,11 +3,11 @@
 
 | Tasks   | Description                         | Status                      |
 |---------|-------------------------------------|-----------------------------|
-| [task-00]() | Install Ubuntu 20.04 LTS [Desktop]  | Done                        |
-| [task-01]() | Star all the amFOSS repositories    | Done                        |
-| [task-02]() | Terminal Hunt                       | Done                        |
-| [task-03]() | Programming [[Hackerrank]](https://www.hackerrank.com/yadukrishnan_491)            | 5 completed |
-| task-04 | Cinebot [Python Telegram Movie Bot] | Unattempted                 |
+| [task-00]() | Install Linux  | Done                        |
+| [task-01]() | Terminal Wizard    | Done                        |
+| [task-02]() | Lessgo Hugo                       | Done                        |
+| [task-03]() | Hello World| 5 completed |
+| task-04 | Competitive Programming | Unattempted                 |
 | task-05 | Find the Bug                        | Unattempted                 |
 | task-06 | Flame Game                          | Unattempted                 |
 | task-07 | Go WASM                             | Unattempted                 |
