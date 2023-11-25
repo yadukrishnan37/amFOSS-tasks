@@ -11,7 +11,7 @@
 | task-05 | Hypertext Mockup Language                        | !                 |
 | task-06 | Cricket Vault                           | !                 |
 | task-07 | AK-47℃                             | !                 |
-| task-08 | Poke-Search!                   |                             |
+| task-08 | Poke-Search!                   |  !                           |
 | task-09 | GeoQuest                     | !                 |
 | task-10 | GeoQuest                                | !                 |
 | task-11 | TinkerCAD                        | !                 |
