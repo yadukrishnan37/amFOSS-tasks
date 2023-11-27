@@ -13,7 +13,7 @@
 | task-07 | AK-47℃                                           | !                           |
 | task-08 | Poke-Search!                                      | !                           |
 | task-09 | GeoQuest                                          | !                           |
-| task-10 | GeoQuest                                          | !                           |
+| task-10 | RuskOS                                            | !                           |
 | task-11 | TinkerCAD                                         | !                           |
 | task-12 | Godot                                             | !                           |
 | task-13 | Vim                                               | !                           |
