@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('search-input');
     const errorDisplay = document.getElementById('error-message');
 
-    const fetchData = (city) => {
+    const openweather = (city) => {
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=80fd590be088300616be1e164aa6d67e`)
             .then((response) => {
                 if (!response.ok) {
@@ -27,7 +27,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         document.getElementById("icon").src = imageObjectURL;
                     })
                     .catch((error) => {
-                        console.error('Error loading image:', error);
                         errorDisplay.textContent = 'Error loading weather icon. Please try again.';
                         errorDisplay.style.display = 'block';
                     });
@@ -40,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const handleUserInput = () => {
         const city = searchInput.value;
-        fetchData(city);
+        openweather(city);
     };
 
     searchForm.addEventListener('submit', function(event) {
@@ -48,5 +47,5 @@ document.addEventListener('DOMContentLoaded', function() {
         handleUserInput();
     });
 
-    fetchData('Maranello');
+    openweather('Maranello');
 });

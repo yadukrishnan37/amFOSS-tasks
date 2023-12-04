@@ -1,42 +1,65 @@
-# RuskOS
 
-A kernel is the core program around which an operating system is built. Utilising a custom inhouse kernel can mitigate potential telemetry and spyware built into an operating system such as Windows.
 
-Tanya Von Degourachaff was delivering a package on behalf of Doktor Wilhelm Voigt that contained such a kernel. It was a little program called the Kreschnder cipher, A kernel written in Rust that contained a unique text pattern required to activate their new state-of-the-art aerial defence system.
 
-Unfortunately, the kernel sustained some damage due to an enemy ambush on the way to the destination. Now it’s up to you, a field engineer Dingus to restore the kernel before shipping it back out.
 
-## Objectives:
-- Resolve the syntax errors
-- Change the background color to black and text color to yellow
-- Correct the keyboard port address to correct port address for the x86 architecture
-- Correct the inverted text input
+This was probably a task that I thought was going to be really hard but ended up being way easier than I thought. When I followed the documentation for this task everything kinda made sense and it was really easy to follow through till the end. I basically downloaded all the requirements and created a config.toml in a .cargo directory. I then added the following code to it:
 
-## Expected output:
-![output](https://github.com/amfoss/tasks/blob/2023/task-10/output.gif)
+```toml
+[unstable]
+build-std-features = ["compiler-builtins-mem"]
+build-std = ["core", "compiler_builtins"]
 
-## Requirements:
-- Rust nightly
-- Qemu
+[build]
+target = "x86_64-rusk.json"
 
-## Some pointers:
-- The source code is located at the src/ directory
-- The bulk of the incorrect code is primarily located at the following files:
-  - main.rs
-  - interrupts.rs
-  - vga_buffer.rs
-- The passcode is "amfoss"
+[dependencies]
+bootimage = "0.10.15"
 
-## How to run it:
-### Run the following commands in the terminal
-- ```cargo build --target x86_64-rusk.json```
-- ```cargo install bootimage```
-- ```rustup component add llvm-tools-preview```
-- ```cargo run```
+[target.'cfg(target_os = "none")']
+runner = "bootimage runner"
+```
 
-## 📚 Resources: 
-- <a href="https://www.geeksforgeeks.org/kernel-in-operating-system/">What is a Kernel?</a>
-- <a href="https://doc.rust-lang.org/book/ch01-00-getting-started.html">Getting started with Rust</a>
-- <a href="https://os.phil-opp.com/minimal-rust-kernel/">Making a kernel in Rust</a>
-  
+I resolved some syntax errors in the main.rs that showed up in the terminal when I ran the file. 
+In vga-buffer.rs I interchanged the values Black and Red in the enumeration. In interrupts.rs:
+```rust
+pub enum Color {
+    Black = 0,
+    Blue = 1,
+    Green = 2,
+    Cyan = 3,
+    Red = 4,
+    Magenta = 5,
+    Brown = 6,
+    LightGray = 7,
+    DarkGray = 8,
+    LightBlue = 9,
+    LightGreen = 10,
+    LightCyan = 11,
+    LightRed = 12,
+    Pink = 13,
+    Yellow = 14,
+    White = 15,
+}
+```
+ I basically changed the loop to read the characters in the right order rather than the reverse order in which it previously did:
 
+```rust
+fn add_character(chars: &mut [Option<char>; ARRAY_SIZE], character: char) -> Result<(), &'static str> {
+    if chars[0].is_none() {
+        // The array is full, remove the last character
+        chars[ARRAY_SIZE - 1] = None;
+    }
+
+    // Find the first available index (None) and insert the new character
+    unsafe {
+        for i in 0..=ARRAY_SIZE {
+            if chars[i].is_none() {
+                chars[i] = Some(character);
+                return Ok(());
+            }
+        }
+    }
+
+    Err("Left shift failed. Cannot add more characters.")
+}
+```

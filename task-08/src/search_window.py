@@ -1,5 +1,5 @@
 import requests, os
-from PySide6.QtWidgets import QLineEdit, QMessageBox, QLabel, QWidget, QPushButton, QApplication
+from PySide6.QtWidgets import QLineEdit, QMessageBox, QLabel, QWidget, QPushButton, QApplication, QVBoxLayout
 from PySide6.QtGui import QPixmap
 from search import search_pokemon
 from capture import capture_pokemon
@@ -8,6 +8,11 @@ from display import DisplayWindow
 class SearchWindow(QWidget):
     def __init__(self):
         super().__init__()
+
+        background_label = QLabel(self)
+        background_pixmap = QPixmap("/home/yadukrishnan/Desktop/amFOSS23/Poke-Search/assets/landing.jpg")  
+        background_label.setPixmap(background_pixmap)
+        background_label.setGeometry(0, 0, background_pixmap.width(), background_pixmap.height())
 
         self.setFixedSize(850, 500)
 
